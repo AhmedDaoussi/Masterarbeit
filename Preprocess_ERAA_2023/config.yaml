@@ -589,7 +589,7 @@ region_zone_mapping:
       source_zones: [SE04]
 
 
-  IT_S1:
+  IT_S:
     Wind_Onshore:
       kwid_shape_a: 4723
       kwid_shape_b: 4724
