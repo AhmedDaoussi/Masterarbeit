@@ -1,655 +1,534 @@
-# Wähle die Testnummer
-test_nr:
-  1
+# config.yaml
+paths:
+  folder_path: "C:/Users/ahmed/Desktop/Data_pfad/2023/ltmp_rech"
+  input_folder_path: "E:/Masterarbeit_zip"
+  low_cut: "C:/Users/ahmed/Desktop/Masterarbeit_alt/Hilfs_dateien_berechnungen/lowcut.xlsx"
+  kwid_region_map: "C:/Users/ahmed/Desktop/Data_pfad/2023/helping_files/kwid_reg_mapping.xlsx"
+export_yearly_prices_to_excel:
+  'yes'
 TECH_TO_ABBR:
  LFSolarPV: "pv"
  Wind_Onshore: "wind_on"
  Wind_Offshore: "wind_off"
  CSP_noStorage: "csp"
-# Definiere den Pfad zu den PECD-ERRA Rohdaten
-pecd_path:
-  "C:\\Users\\ahmed\\Desktop\\Data_pfad\\2023_ty_2025\\PECD"
-target_year:
-  2025
-weather_years:
-  start: 1982
-  end: 2020
 
-# Basis-Technologien einmal definieren:
-common_techs: &default_techs
-  - LFSolarPV
-  - Wind_Onshore
-  - Wind_Offshore
-
-pecd_zone_technologies:
-  # Standardländer → Alias verwenden
-  AL00: *default_techs
-  AT00: *default_techs
-  BA00: *default_techs
-  BE00: *default_techs
-  BG00: *default_techs
-  CH00: *default_techs
-  CY00: *default_techs
-  CZ00: *default_techs
-  DE00: *default_techs
-  DKE1: *default_techs
-  DKW1: *default_techs
-  EE00: *default_techs
-  FI00: *default_techs
-  FR00: *default_techs
-  GR00: *default_techs
-  HR00: *default_techs
-  HU00: *default_techs
-  ITN1: *default_techs
-  ITCN: *default_techs
-  ITCS: *default_techs
-  ITS1: *default_techs
-  ITCA: *default_techs
-  ITSA: *default_techs
-  ITSI: *default_techs
-  LT00: *default_techs
-  LV00: *default_techs
-  ME00: *default_techs
-  MK00: *default_techs
-  NL00: *default_techs
-  NOS0: *default_techs
-  PL00: *default_techs
-  PT00: *default_techs
-  RO00: *default_techs
-  RS00: *default_techs
-  SE01: *default_techs
-  SE02: *default_techs
-  SE03: *default_techs
-  SE04: *default_techs
-  SI00: *default_techs
-  SK00: *default_techs
-  TR00: *default_techs
-  UK00: *default_techs
-
-
-  # Spanien → bekommt zusätzliche Technologie
-  ES00:
-    - LFSolarPV
-    - Wind_Onshore
-    - Wind_Offshore
-    - CSP_noStorage
+years:
+  start_year: 1992
+  end_year: 1992
 
 region_zone_mapping:
   Germany:
     Wind_Onshore:
       kwid_shape_a: 4748
       kwid_shape_b: 4732
-      source_zones: [DE00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4746
       kwid_shape_b: 4784
-      source_zones: [DE00]
+
 
     LFSolarPV:
       kwid: 4832
-      source_zones: [DE00]
+
 
   Baltics:
     Wind_Onshore:
       kwid_shape_a: 4782
       kwid_shape_b: 4733
-      source_zones: [EE00, LV00, LT00]
-      zones:
-        EE00: { capacity: 680, weight: 0.272 }
-        LV00: { capacity: 140, weight: 0.056 }
-        LT00: { capacity: 1680, weight: 0.672 }
+
     Wind_Offshore:
       kwid_shape_a: 275
       kwid_shape_b: null
-      source_zones: [EE00, LV00, LT00]
-      zones:
-        EE00: { capacity: 0, weight: 0.333 }
-        LV00: { capacity: 0, weight: 0.333 }
-        LT00: { capacity: 0, weight: 0.333 }
+
     LFSolarPV:
       kwid: 4866
-      source_zones: [EE00, LV00, LT00]
-      zones:
-        EE00: { capacity: 1170, weight: 0.343 }
-        LV00: { capacity: 450, weight: 0.132 }
-        LT00: { capacity: 1790, weight: 0.525 }
+
 
   Turkey:
     Wind_Onshore:
       kwid_shape_a: 4767
       kwid_shape_b: 4735
-      source_zones: [GR00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [GR00]
+
 
     LFSolarPV:
       kwid: 4852
-      source_zones: [GR00]
+
 
 
   Balkans:
     Wind_Onshore:
       kwid_shape_a: 4773
       kwid_shape_b: 4736
-      source_zones: [ BA00, RS00, ME00, AL00, MK00 ]
-      zones:
-        BA00: { capacity: 130, weight: 0.13 }
-        RS00: { capacity: 740, weight: 0.71 }
-        ME00: { capacity: 120, weight: 0.12 }
-        AL00: { capacity: 0,   weight: 0.00 }
-        MK00: { capacity: 40,  weight: 0.04 }
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ BA00, RS00, ME00, AL00, MK00 ]
+
 
     LFSolarPV:
       kwid: 4857
-      source_zones: [ BA00, RS00, ME00, AL00, MK00 ]
-      zones:
-        BA00: { capacity: 30,  weight: 0.08 }
-        RS00: { capacity: 70,  weight: 0.19 }
-        ME00: { capacity: 0,   weight: 0.00 }
-        AL00: { capacity: 200, weight: 0.54 }
-        MK00: { capacity: 70,  weight: 0.19 }
+
 
   France:
     Wind_Onshore:
       kwid_shape_a: 4739
       kwid_shape_b: 4737
-      source_zones: [FR00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4738
       kwid_shape_b: null
-      source_zones: [FR00]
+
 
     LFSolarPV:
       kwid: 4823
-      source_zones: [FR00]
+
 
 
   Belgium:
     Wind_Onshore:
       kwid_shape_a: 4716
       kwid_shape_b: 4742
-      source_zones: [BE00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4717
       kwid_shape_b: null
-      source_zones: [BE00]
+
 
     LFSolarPV:
       kwid: 4802
-      source_zones: [BE00]
+
 
 
   Austria:
     Wind_Onshore:
       kwid_shape_a: 4734
       kwid_shape_b: 4745
-      source_zones: [AT00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [AT00]
+
 
     LFSolarPV:
       kwid: 4819
-      source_zones: [AT00]
+
 
 
   Switzerland:
     Wind_Onshore:
       kwid_shape_a: 4722
       kwid_shape_b: 4747
-      source_zones: [CH00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [CH00]
+
 
     LFSolarPV:
       kwid: 4806
-      source_zones: [CH00]
+
 
 
   Netherlands:
     Wind_Onshore:
       kwid_shape_a: 4770
       kwid_shape_b: 4750
-      source_zones: [NL00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4771
       kwid_shape_b: null
-      source_zones: [NL00]
+
 
     LFSolarPV:
       kwid: 4855
-      source_zones: [NL00]
-
 
   Poland:
     Wind_Onshore:
       kwid_shape_a: 4796
       kwid_shape_b: 4751
-      source_zones: [PL00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4794
       kwid_shape_b: null
-      source_zones: [PL00]
+
 
     LFSolarPV:
       kwid: 4878
-      source_zones: [PL00]
+
 
 
   Czech Republic:
     Wind_Onshore:
       kwid_shape_a: 4731
       kwid_shape_b: 4753
-      source_zones: [CZ00]
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [CZ00]
+
 
     LFSolarPV:
       kwid: 4817
-      source_zones: [CZ00]
+
 
 
   DenmarkWest:
     Wind_Onshore:
       kwid_shape_a: 4740
       kwid_shape_b: 4754
-      source_zones: [DKW1]
+
 
     Wind_Offshore:
       kwid_shape_a: 4741
       kwid_shape_b: null
-      source_zones: [DKW1]
+
 
     LFSolarPV:
       kwid: 4824
-      source_zones: [DKW1]
+
 
 
   DenmarkEast:
     Wind_Onshore:
       kwid_shape_a: 4743
       kwid_shape_b: 4756
-      source_zones: [DKE1]
+
 
     Wind_Offshore:
       kwid_shape_a: 4744
       kwid_shape_b: null
-      source_zones: [DKE1]
+
 
     LFSolarPV:
       kwid: 4827
-      source_zones: [DKE1]
+
 
 
   SloCro:
     Wind_Onshore:
       kwid_shape_a: 4764
       kwid_shape_b: 4760
-      source_zones: [SI00, HR00]
-      zones:
-        SI00: { capacity: 0, weight: 0.0 }
-        HR00: { capacity: 1240, weight: 1.0 }
+
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [SI00, HR00]
-      zones:
-        SI00: { capacity: 0, weight: 0.0 }
-        HR00: { capacity: 0, weight: 0.0 }
+
     LFSolarPV:
       kwid: 4848
-      source_zones: [SI00, HR00]
-      zones:
-        SI00: { capacity: 1410, weight: 0.758 }
-        HR00: { capacity: 450, weight: 0.242 }
+
 
   SWE1and2:
     Wind_Onshore:
       kwid_shape_a: 4761
       kwid_shape_b: 4762
-      source_zones: [SE01, SE02]
-      zones:
-        SE01: { capacity: 3023, weight: 0.3 }
-        SE02: { capacity: 6907, weight: 0.7 }
+
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [SE01, SE02]
-      zones:
-        SE01: { capacity: 0, weight: 0.0 }
-        SE02: { capacity: 0, weight: 0.0 }
+
     LFSolarPV:
       kwid: 4845
-      source_zones: [SE01, SE02]
-      zones:
-        SE01: { capacity: 29, weight: 0.0 }   # SE01 file for PV does is not provided by ERAA
-        SE02: { capacity: 204, weight: 1.0 }
+
   IT_CN:
     Wind_Onshore:
       kwid_shape_a: 4715
       kwid_shape_b: 4718
-      source_zones: [ITCN]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ITCN]
+
 
     LFSolarPV:
       kwid: 3678
-      source_zones: [ITCN]
 
 
   England:
     Wind_Onshore:
       kwid_shape_a: 4776
       kwid_shape_b: 4763
-      source_zones: [UK00]
+
 
     Wind_Offshore:
       kwid_shape_a: 4777
       kwid_shape_b: 4786
-      source_zones: [UK00]
+
 
     LFSolarPV:
       kwid: 4861
-      source_zones: [UK00]
+
 
 
   IT_N1:
     Wind_Onshore:
       kwid_shape_a: 4781
       kwid_shape_b: 4714
-      source_zones: [ITN1]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ITN1]
 
     LFSolarPV:
       kwid: 4865
-      source_zones: [ITN1]
-
 
   Spain:
     Wind_Onshore:
       kwid_shape_a: 4721
       kwid_shape_b: 4765
-      source_zones: [ES00]
+
 
     Wind_Offshore:
       kwid_shape_a: 955
       kwid_shape_b: null
-      source_zones: [ES00]
+
 
     LFSolarPV:
       kwid: 4803
-      source_zones: [ES00]
+
 
     CSP_noStorage:
       kwid: 4805
-      source_zones: [ES00]
+
 
 
   Romania:
     Wind_Onshore:
       kwid_shape_a: 4725
       kwid_shape_b: 4766
-      source_zones: [RO00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [RO00]
+
 
     LFSolarPV:
       kwid: 4809
-      source_zones: [RO00]
-
 
   Slovakia:
     Wind_Onshore:
       kwid_shape_a: 4749
       kwid_shape_b: 4768
-      source_zones: [SK00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [SK00]
+
 
     LFSolarPV:
       kwid: 4833
-      source_zones: [SK00]
-
 
   Hungary:
     Wind_Onshore:
       kwid_shape_a: 4788
       kwid_shape_b: 4769
-      source_zones: [HU00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [HU00]
+
 
     LFSolarPV:
       kwid: 4872
-      source_zones: [HU00]
+
 
 
   Bulgaria:
     Wind_Onshore:
       kwid_shape_a: 4713
       kwid_shape_b: 4772
-      source_zones: [BG00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [BG00]
+
 
     LFSolarPV:
       kwid: 4797
-      source_zones: [BG00]
+
 
 
   Greece:
     Wind_Onshore:
       kwid_shape_a: 4752
       kwid_shape_b: 4774
-      source_zones: [GR00]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [GR00]
+
 
     LFSolarPV:
       kwid: 4838
-      source_zones: [GR00]
+
 
 
   Portugal:
     Wind_Onshore:
       kwid_shape_a: 4730
       kwid_shape_b: 4775
-      source_zones: [PT00]
+
 
     Wind_Offshore:
       kwid_shape_a: 1830
       kwid_shape_b: null
-      source_zones: [PT00]
+
 
     LFSolarPV:
       kwid: 4812
-      source_zones: [PT00]
 
 
   Norway:
     Wind_Onshore:
       kwid_shape_a: 4785
       kwid_shape_b: 4778
-      source_zones: [NOS0]
+
 
     Wind_Offshore:
       kwid_shape_a: 1639
       kwid_shape_b: null
-      source_zones: [NOS0]
+
 
     LFSolarPV:
       kwid: 4869
-      source_zones: [NOS0]
+
 
 
   Finland:
     Wind_Onshore:
       kwid_shape_a: 4791
       kwid_shape_b: 4779
-      source_zones: [FI00]
+
 
     Wind_Offshore:
       kwid_shape_a: 64
       kwid_shape_b: null
-      source_zones: [FI00]
+
 
     LFSolarPV:
       kwid: 4875
-      source_zones: [FI00]
 
 
   IT_CS:
     Wind_Onshore:
       kwid_shape_a: 4719
       kwid_shape_b: 4720
-      source_zones: [ITCS]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ITCS]
+
 
     LFSolarPV:
       kwid: 3295
-      source_zones: [ITCS]
 
 
   SWE3:
     Wind_Onshore:
       kwid_shape_a: 4755
       kwid_shape_b: 4780
-      source_zones: [SE03]
+
 
     Wind_Offshore:
       kwid_shape_a: 4757
       kwid_shape_b: null
-      source_zones: [SE03]
+
 
     LFSolarPV:
       kwid: 4839
-      source_zones: [SE03]
+
 
 
   SWE4:
     Wind_Onshore:
       kwid_shape_a: 4758
       kwid_shape_b: 4783
-      source_zones: [SE04]
+
 
     Wind_Offshore:
       kwid_shape_a: 4759
       kwid_shape_b: null
-      source_zones: [SE04]
+
 
     LFSolarPV:
       kwid: 4843
-      source_zones: [SE04]
-
 
   IT_S:
     Wind_Onshore:
       kwid_shape_a: 4723
       kwid_shape_b: 4724
-      source_zones: [ITS1]
+
 
     Wind_Offshore:
       kwid_shape_a: 1646
       kwid_shape_b: null
-      source_zones: [ITS1]
+
 
     LFSolarPV:
       kwid: 3675
-      source_zones: [ITS1]
+
 
 
   IT_SI:
     Wind_Onshore:
       kwid_shape_a: 4726
       kwid_shape_b: 4727
-      source_zones: [ITSI]
+
 
     Wind_Offshore:
       kwid_shape_a: 1642
       kwid_shape_b: null
-      source_zones: [ITSI]
+
 
     LFSolarPV:
       kwid: 4863
-      source_zones: [ITSI]
+
 
 
   IT_SA:
     Wind_Onshore:
       kwid_shape_a: 4728
       kwid_shape_b: 4729
-      source_zones: [ITSA]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ITSA]
+
 
     LFSolarPV:
       kwid: 2923
-      source_zones: [ITSA]
-
 
   IT_CA:
     Wind_Onshore:
       kwid_shape_a: 679
       kwid_shape_b: 1289
-      source_zones: [ITCA]
+
 
     Wind_Offshore:
       kwid_shape_a: null
       kwid_shape_b: null
-      source_zones: [ITCA]
+
 
     LFSolarPV:
       kwid: 663
-      source_zones: [ITCA]
-
-

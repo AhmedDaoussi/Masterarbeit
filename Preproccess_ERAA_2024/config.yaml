@@ -12,10 +12,10 @@ TECH_TO_ABBR:
 
 # Definiere den Pfad zu den PECD-ERRA Rohdaten
 pecd_paths:
-  "2024": "C:\\Users\\ahmed\\Desktop\\Data_pfad\\2024\\PECD"
+  "2024": "C:\\Users\\ahmed\\Desktop\\Data_pfad\\2024_ty_2026\\PECD"
 
 target_year:
-  2035
+  2026
 
 weather_years:
   list:
